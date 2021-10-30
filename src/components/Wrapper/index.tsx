@@ -1,6 +1,6 @@
 import React, { Children } from 'react';
 import NavBar from '../Navbar';
-import {Container} from '../../styles/Pages/Wrapper'
+import {Container} from './styles'
 
 const Wrapper: React.FC = (props) => {
   return (

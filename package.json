@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@types/material-ui": "^0.21.12",
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "formik": "^2.2.9",
     "next": "11.1.2",
     "next-images": "^1.8.1",
     "react": "17.0.2",

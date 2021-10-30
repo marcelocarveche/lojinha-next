@@ -1,27 +1,39 @@
-import React, { useState } from 'react';
-import {Container, Logo, Hamburger, Menu, MenuLink} from '../../styles/Pages/Navbar';
+import React, { useState } from 'react'
+import { Container, Logo, Hamburger, Menu, MyLink } from './styles'
+import Link from 'next/link'
+import NavLink from '../NavLink'
 
 const NavBar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
     <Container>
-      <Logo href="">
-        Loja<span>E-commerce</span>
-      </Logo>
+      <Link href="/">
+        <Logo>
+          Loja<span>E-commerce</span>
+        </Logo>
+      </Link>
       <Hamburger onClick={() => setIsOpen(!isOpen)}>
-      <span></span>
-      <span></span>
-      <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </Hamburger>
       <Menu isOpen={isOpen}>
-        <MenuLink>Sobre</MenuLink>
-        <MenuLink>Contato</MenuLink>
-        <MenuLink>Entrar</MenuLink>
-        <MenuLink>Cadastrar-se</MenuLink>
+        <NavLink href="/sobre">
+          <MyLink>Sobre</MyLink>
+        </NavLink>
+        <NavLink href="/contato">
+          <MyLink>Contato</MyLink>
+        </NavLink>
+        <NavLink href="/entrar">
+          <MyLink>Entrar</MyLink>
+        </NavLink>
+        <NavLink href="/register/user">
+          <MyLink>Cadastrar-se</MyLink>
+        </NavLink>
       </Menu>
     </Container>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

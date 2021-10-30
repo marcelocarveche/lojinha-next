@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background: ${props => props.theme.colors.lightGray2};
   /* border-bottom: 1px solid ${props => props.theme.colors.baseBlack}; */
-  padding: 0 5rem;
+  padding: 0 2rem;
   /* width: 100vw; */
   display: flex;
   justify-content: space-between;
@@ -17,6 +17,7 @@ export const Logo = styled.a`
   text-decoration: none;
   font-weight: 800;
   font-size: 2rem;
+  cursor: pointer;
   span{
     font-weight: 300;
     font-size: 1.3rem;
@@ -44,7 +45,7 @@ export const Hamburger = styled.div`
 interface MenuProps {
   isOpen: boolean;
 }
-export const Menu = styled.div<MenuProps>`
+export const Menu = styled.nav<MenuProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -56,8 +57,14 @@ export const Menu = styled.div<MenuProps>`
     width: 100vw;
     max-height: ${({isOpen}) => (isOpen ? '300px' : '0px')};
   }
+  a {
+
+
+  }
+
 `;
-export const MenuLink = styled.a`
+
+export const MyLink = styled.a`
   padding: 1rem 2rem;
   cursor: pointer;
   text-align: center;
@@ -68,5 +75,9 @@ export const MenuLink = styled.a`
     color: ${props => props.theme.colors.primary};
     font-weight: 800px;
   }
+  &[aria-current] {
+      color: ${props => props.theme.colors.primary};
+      font-weight: 800;
+    }
 `;
 

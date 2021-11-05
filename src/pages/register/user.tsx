@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Wrapper from '../../components/Wrapper'
 import { Container } from '../../styles/styled-components/Container'
 import { Formik, Form, Field } from 'formik'
 import { Button } from '@material-ui/core'
 import { InputWrapper } from '../../styles/styled-components/RegisterUser'
+import { DataContext } from '../../store/GlobalState'
 
 const RegisterUser: React.FC = () => {
+
+const { state, dispatch } = useContext(DataContext);
+
   return (
     <Wrapper>
       <Container>
@@ -13,7 +17,19 @@ const RegisterUser: React.FC = () => {
           initialValues={{
             nome: '',
             email: '',
-            senha: ''
+            senha: '',
+            confirmarSenha: ''
+          }}
+          validate={values => {
+            let errors: any = {};
+
+            if(!values.nome || values.email === ''){
+              errors.nome = 'Nome é obrigatório';
+              dispatch({type: 'NOTIFY', payload: { error: errors.nome } });
+            }
+            console.log("ERROS: ", errors);
+            return errors;
+
           }}
           onSubmit={values => {
             console.log(values)

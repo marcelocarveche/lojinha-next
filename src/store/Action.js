@@ -1,6 +1,6 @@
 const ACTIONS = {
   NOTIFY: 'NOTIFY',
-  AUTH: '',
+  AUTH: 'AUTH',
 }
 
 export default ACTIONS

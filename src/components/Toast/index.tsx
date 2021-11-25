@@ -1,41 +1,28 @@
-import React from 'react'
+import Swal from 'sweetalert2';
 
-interface ToastProps {
-  msg: any;
-  handleShow: any;
-  bgColor: string
+export type ToastType =
+  | 'success'
+  | 'error'
+  | 'warning'
+  | 'info'
+  | 'question'
+  | undefined;
 
-}
+const toast = (message: string, type: ToastType) => {
+  Swal.fire({
+    position: type === 'warning' ? 'center' : 'center',
+    toast: false,
+    icon: type,
+    title: message,
+    showConfirmButton: false,
+    showCloseButton: false,
+    timerProgressBar: true,
+    timer: 5000,
+    customClass: {
+      popup: 'sweetalert-popup',
+      container: type === 'warning' ? 'container-warning' : '',
+    },
+  });
+};
 
-const Toast: React.FC<ToastProps> = ({
-  msg,
-  handleShow,
-  bgColor,
-}) => {
-  return (
-    <div
-      className={`toast show`}
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-    >
-      <div className={`toast-header ${bgColor}`}>
-        {/* <img src="..." className="mr-2 rounded" alt="..."> */}
-        <strong className="mr-auto">msg.title</strong>
-        {/* <small>11 mins ago</small> */}
-        <button
-          type="button"
-          className="mb-1 ml-2 close"
-          data-dismiss="toast"
-          aria-label="Close"
-          onClick={handleShow}
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div className="toast-body">msg.msg</div>
-    </div>
-  )
-}
-
-export default Toast
+export default toast

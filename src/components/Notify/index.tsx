@@ -1,33 +1,22 @@
 import React from 'react'
 import { useContext } from 'react'
 import { DataContext } from '../../store/GlobalState'
+import Loading from '../Loading'
+import toast from '../Toast'
 
-import Swal from 'sweetalert2';
+interface NotifyProps {}
 
-export type NotifyType =
-  | 'success'
-  | 'error'
-  | 'warning'
-  | 'info'
-  | 'question'
-  | undefined;
+const Notify: React.FC<NotifyProps> = () => {
+  const { state, dispatch } = useContext(DataContext)
+  const { notify } = state
 
-export const Notify = (message: string, type: NotifyType) => {
-  Swal.fire({
-    position: type === 'warning' ? 'bottom' : 'top-end',
-    toast: true,
-    icon: type,
-    title: message,
-    showConfirmButton: false,
-    showCloseButton: true,
-    timerProgressBar: true,
-    timer: 11000,
-    customClass: {
-      popup: 'sweetalert-popup',
-      container: type === 'warning' ? 'container-warning' : '',
-    },
-  });
-};
-
+  return (
+    <>
+      {notify.loading && <Loading />}
+      {notify.error && toast(notify.error, 'error')}
+      {notify.success && toast(notify.success, 'success')}
+    </>
+  )
+}
 
 export default Notify

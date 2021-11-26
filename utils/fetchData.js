@@ -13,3 +13,15 @@ export const postData = async(url, post, token) => {
     const data = await res.json()
     return data
 }
+
+export const getData = async(url, token) => {
+    const res = await fetch(`${baseUrl}/api/${url}`, {
+        method: 'GT',
+        headers: {
+            'Authorization': token
+        },
+    })
+
+    const data = await res.json()
+    return data
+}

@@ -1,10 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 
-import connectDB from '../../../utils/connectDB'
+import connectDB from '../../../../utils/connectDB'
 import Users from '../../../models/userModel'
-import validar from '../../../utils/validate'
 import bcrypt from 'bcrypt'
-import { createAccessToken, createRefreshToken } from '../../../utils/generateToken'
+import { createAccessToken, createRefreshToken } from '../../../../utils/generateToken'
 
 connectDB()
 
@@ -21,16 +20,16 @@ export default async(req, res) => {
 
 const login = async(req, res) => {
     try {
-        const {email, password } = req.body
+        const {email, senha } = req.body
 
         const user = await Users.findOne({ email })
         if (!user) return res.status(400).json({err: 'Usuário não existe!'})
 
-        const verPwd = await bcrypt.compare(password, user.password)
-        if (!verPwd) return res.status(400).json({err: 'Password Incorreto!'})
+        const verPwd = await bcrypt.compare(senha, user.senha)
+        if (!verPwd) return res.status(400).json({err: 'Senha Incorreta!'})
 
-        const access_token = createAccessToken({_id: user._id})
-        const refresh_token = createRefreshToken({_id: user._id})
+        const access_token = createAccessToken({id: user._id})
+        const refresh_token = createRefreshToken({id: user._id})
 
 
         res.json({
@@ -38,7 +37,7 @@ const login = async(req, res) => {
             refresh_token,
             access_token,
             user: {
-                name: user.name,
+                nome: user.nome,
                 email: user.email,
                 role: user.role,
                 root: user.root

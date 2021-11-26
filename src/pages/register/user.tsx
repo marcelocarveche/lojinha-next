@@ -23,6 +23,7 @@ const RegisterUser: React.FC = () => {
       email: values.email,
       senha: values.senha
     }
+    console.log("UserData: ", userData)
     const res = await postData('auth/registro', userData)
     if (res.error) {
       return dispatch({ type: 'NOTIFY', payload: { error: res.error } });

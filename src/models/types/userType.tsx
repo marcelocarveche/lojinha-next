@@ -1,7 +1,7 @@
 export interface User {
-  nome: String;
-  email: String;
-  senha: String;
-  role?: String;
-  root?: Boolean;
+  nome: object;
+  email: object;
+  senha: object;
+  role?: object;
+  root?: object;
 }

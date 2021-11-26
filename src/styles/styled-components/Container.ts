@@ -21,3 +21,14 @@ export const Container = styled.div`
     }
   }
 `
+
+export const ContainerLogin = styled(Container)`
+justify-content: center;
+  form {
+    flex-grow: 15;
+  }
+  & > span {
+    background-image: url('/Scenes/Scenes08.svg');
+    background-size: 400px;
+  }
+`;

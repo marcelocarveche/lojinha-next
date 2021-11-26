@@ -18,7 +18,7 @@ export default async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    const { nome, email, senha, } = req.body;
+    const { nome, email, senha } = req.body;
     // Validar Campos depois **
     const passwordHash = await bcrypt.hash(senha, 12);
 

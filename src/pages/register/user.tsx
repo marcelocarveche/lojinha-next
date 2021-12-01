@@ -6,10 +6,19 @@ import { Button } from '@material-ui/core'
 import { InputWrapper } from '../../styles/styled-components/RegisterUser'
 import { DataContext } from '../../store/GlobalState'
 import { postData } from '../../../utils/fetchData'
+import { useRouter } from 'next/router'
 
 const RegisterUser: React.FC = () => {
   const { state, dispatch } = useContext(DataContext);
+  const { auth } = state
+  const router = useRouter();
+
   let errorMessage = null;
+
+  if(Object.keys(auth).length !== 0){
+    router.push('/');
+  }
+
 
   const onSubmit = async (values: any, errors: any) => {
     // e.preventDefault();

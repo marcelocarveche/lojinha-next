@@ -4,6 +4,13 @@ import Head from 'next/head'
 import { ContainerGeral } from '../styles/styled-components/ContainerGeral'
 import Wrapper from '../components/Wrapper'
 import { Container } from '../styles/styled-components/Container'
+import ProductCard from '../components/ProductCard'
+import ProductCardLis from '../components/ProductCardLis'
+import styled from 'styled-components'
+
+const ContainerIndex = styled(Container)`
+  flex-direction: column;
+`
 
 const Home: React.FC = () => {
   return (
@@ -14,9 +21,77 @@ const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Wrapper>
-        <Container>
+        <ContainerIndex>
           <h1>Bem vindo a Lojinha</h1>
-        </Container>
+          <ProductCardLis>
+            <ProductCard
+              title="Mouse Gamer"
+              price={229.99}
+              description="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien..."
+              content="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien. Duis et nunc luctus quam bibendum vestibulum. Duis lacus enim, ultricies vitae luctus et, auctor vitae metus."
+              images="https://images.tcdn.com.br/img/img_prod/699576/mouse_gamer_redragon_impact_rgb_12400dpi_m908_1069_1_20200404102045.png"
+              category="eletrônicos"
+              checked={false}
+              inStock="10"
+              sold="156"
+            />
+            <ProductCard
+              title="Mouse Gamer"
+              price={229.99}
+              description="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien..."
+              content="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien. Duis et nunc luctus quam bibendum vestibulum. Duis lacus enim, ultricies vitae luctus et, auctor vitae metus."
+              images="https://images.tcdn.com.br/img/img_prod/699576/mouse_gamer_redragon_impact_rgb_12400dpi_m908_1069_1_20200404102045.png"
+              category="eletrônicos"
+              checked={false}
+              inStock="10"
+              sold="156"
+            />
+            <ProductCard
+              title="Mouse Gamer"
+              price={229.99}
+              description="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien..."
+              content="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien. Duis et nunc luctus quam bibendum vestibulum. Duis lacus enim, ultricies vitae luctus et, auctor vitae metus."
+              images="https://images.tcdn.com.br/img/img_prod/699576/mouse_gamer_redragon_impact_rgb_12400dpi_m908_1069_1_20200404102045.png"
+              category="eletrônicos"
+              checked={false}
+              inStock="10"
+              sold="156"
+            />
+            <ProductCard
+              title="Mouse Gamer"
+              price={229.99}
+              description="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien..."
+              content="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien. Duis et nunc luctus quam bibendum vestibulum. Duis lacus enim, ultricies vitae luctus et, auctor vitae metus."
+              images="https://images.tcdn.com.br/img/img_prod/699576/mouse_gamer_redragon_impact_rgb_12400dpi_m908_1069_1_20200404102045.png"
+              category="eletrônicos"
+              checked={false}
+              inStock="10"
+              sold="156"
+            />
+            <ProductCard
+              title="Mouse Gamer"
+              price={229.99}
+              description="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien..."
+              content="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien. Duis et nunc luctus quam bibendum vestibulum. Duis lacus enim, ultricies vitae luctus et, auctor vitae metus."
+              images="https://images.tcdn.com.br/img/img_prod/699576/mouse_gamer_redragon_impact_rgb_12400dpi_m908_1069_1_20200404102045.png"
+              category="eletrônicos"
+              checked={false}
+              inStock="10"
+              sold="156"
+            />
+            <ProductCard
+              title="Mouse Gamer"
+              price={229.99}
+              description="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien..."
+              content="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien. Duis et nunc luctus quam bibendum vestibulum. Duis lacus enim, ultricies vitae luctus et, auctor vitae metus."
+              images="https://images.tcdn.com.br/img/img_prod/699576/mouse_gamer_redragon_impact_rgb_12400dpi_m908_1069_1_20200404102045.png"
+              category="eletrônicos"
+              checked={false}
+              inStock="10"
+              sold="156"
+            />
+          </ProductCardLis>
+        </ContainerIndex>
       </Wrapper>
     </ContainerGeral>
   )

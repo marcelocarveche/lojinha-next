@@ -1,4 +1,4 @@
-import { Schema, model, connect} from 'mongoose'
+import { Schema, models, model} from 'mongoose'
 import { User } from './types/userType'
 const userSchema = new Schema<User>({
   nome: {
@@ -28,7 +28,7 @@ const userSchema = new Schema<User>({
   }
 )
 
-const Dataset = model<User>('user', userSchema);
+const Dataset = models.user || model<User>('user', userSchema);
 
 
 export default Dataset;

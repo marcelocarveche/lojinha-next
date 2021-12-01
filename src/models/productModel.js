@@ -1,0 +1,50 @@
+import { Schema, models, model} from 'mongoose'
+import { User } from './types/userType'
+
+const productSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  content: {
+    type: String,
+    required: true,
+  },
+  images: {
+    type: Array,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
+  checked: {
+    type: Boolean,
+    default: false,
+  },
+  inStock: {
+    type: Number,
+    default: 0,
+  },
+  sold: {
+    type: Number,
+    default: 0,
+  }
+},
+  {
+    timestamps: true
+  }
+)
+
+const Dataset = models.product || model('product', productSchema);
+
+
+export default Dataset;

@@ -1,6 +1,6 @@
 import { Button } from '@material-ui/core'
 import { Field, Form, Formik } from 'formik'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { postData } from '../../utils/fetchData'
 import Wrapper from '../components/Wrapper'
 import {  ContainerLogin } from '../styles/styled-components/Container'
@@ -8,13 +8,14 @@ import { InputWrapper } from '../styles/styled-components/RegisterUser'
 import { DataContext } from '../store/GlobalState'
 import Cookie from 'js-cookie'
 import connectDB from '../../utils/connectDB';
+import { useRouter } from 'next/router'
 
 const Entrar: React.FC = () => {
   let errorMessage = null
   const [userData, setUserData] = useState({ email: '', password: '' })
   const { state, dispatch } = useContext(DataContext)
   const { auth } = state
-
+  const router = useRouter();
 
   const onSubmit = async (values: any, errors: any) => {
     // e.preventDefault();
@@ -44,7 +45,14 @@ const Entrar: React.FC = () => {
     })
 
     localStorage.setItem('primeiroLogin', true);
+
+
   }
+  useEffect(() => {
+    if(Object.keys(auth).length !== 0){
+      router.push('/');
+    }
+  }, [auth])
   return (
     <Wrapper>
       <ContainerLogin>

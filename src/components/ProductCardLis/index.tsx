@@ -7,10 +7,10 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-const index: React.FC = (props) => {
+const index: React.FC = ({children}) => {
   return (
     <Container>
-      {props.children}
+      {children}
     </Container>
   );
 };

@@ -2,6 +2,7 @@ import { Button, Typography } from '@material-ui/core'
 import React from 'react'
 import { Container } from './styles'
 import { MdAddShoppingCart } from 'react-icons/md'
+import { AiOutlineShop } from 'react-icons/ai'
 import {
   createTheme,
   MuiThemeProvider,

@@ -16,7 +16,7 @@ export const postData = async(url, post, token) => {
 
 export const getData = async(url, token) => {
     const res = await fetch(`${baseUrl}/api/${url}`, {
-        method: 'GT',
+        method: 'GET',
         headers: {
             'Authorization': token
         },

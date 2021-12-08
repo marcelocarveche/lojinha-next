@@ -26,6 +26,9 @@ const NavBar: React.FC = () => {
         <span></span>
       </Hamburger>
       <Menu isOpen={isOpen}>
+        <NavLink href="/">
+          <MyLink>Produtos</MyLink>
+        </NavLink>
         <NavLink href="/sobre">
           <MyLink>Sobre</MyLink>
         </NavLink>

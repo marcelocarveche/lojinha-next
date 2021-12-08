@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 
 import { ContainerGeral } from '../styles/styled-components/ContainerGeral'
@@ -14,6 +14,11 @@ const ContainerIndex = styled(Container)`
 `
 const Home = ({products}) => {
   const [productList, setProductList] = useState(products);
+
+  useEffect(() => {
+    setProductList(products);
+    console.log(productList[0]._id);
+  }, []);
 
   return (
     <ContainerGeral>
@@ -32,6 +37,7 @@ const Home = ({products}) => {
               productList.map((product, index) => (
                 <ProductCard
                   key={index}
+                  _id={product._id}
                   title={product.title}
                   price={product.price}
                   description={product.content}
@@ -44,17 +50,6 @@ const Home = ({products}) => {
                 />
             ))
             )}
-            <ProductCard
-              title="Mouse Gamer"
-              price={229.99}
-              description="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien..."
-              content="Aenean ac orci porttitor, placerat magna ut, venenatis metus. Aliquam non turpis sapien. Duis et nunc luctus quam bibendum vestibulum. Duis lacus enim, ultricies vitae luctus et, auctor vitae metus."
-              images="https://images.tcdn.com.br/img/img_prod/699576/mouse_gamer_redragon_impact_rgb_12400dpi_m908_1069_1_20200404102045.png"
-              category="eletrônicos"
-              checked={false}
-              inStock="10"
-              sold="156"
-            />
           </ProductCardLis>
         </ContainerIndex>
       </Wrapper>

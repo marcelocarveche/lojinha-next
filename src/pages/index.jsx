@@ -36,17 +36,18 @@ const Home = ({products}) => {
             ) : (
               productList.map((product, index) => (
                 <ProductCard
+                  product={product}
                   key={index}
-                  _id={product._id}
-                  title={product.title}
-                  price={product.price}
-                  description={product.content}
-                  content={product.content}
-                  images={product.images[0].url}
-                  category={product.category}
-                  checked={false}
-                  inStock="10"
-                  sold="156"
+                  // _id={product._id}
+                  // title={product.title}
+                  // price={product.price}
+                  // description={product.content}
+                  // content={product.content}
+                  // images={product.images[0].url}
+                  // category={product.category}
+                  // checked={false}
+                  // inStock="10"
+                  // sold="156"
                 />
             ))
             )}

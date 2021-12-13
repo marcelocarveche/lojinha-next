@@ -1,5 +1,5 @@
 import { Button, Typography } from '@material-ui/core'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Container } from './styles'
 import { MdAddShoppingCart } from 'react-icons/md'
 import { AiOutlineShop } from 'react-icons/ai'
@@ -9,8 +9,11 @@ import {
   MuiThemeProvider,
   createStyles
 } from '@material-ui/core/styles'
+import { addToCart } from '../../store/Action'
+import { DataContext } from '../../store/GlobalState'
 
 interface ProctCardProps {
+  product: any
   _id: string
   title: string
   price: number
@@ -35,23 +38,30 @@ const theme = createTheme({
 })
 
 const ProctCard: React.FC<ProctCardProps> = ({
-  _id,
-  title,
-  price,
-  description,
-  content,
-  images,
-  category,
-  checked,
-  inStock,
-  sold
+  product
 }) => {
+  const {state, dispatch } = useContext(DataContext)
+  const { auth, cart } = state
+  const {_id,
+    title,
+    price,
+    description,
+    content,
+    images,
+    category,
+    checked,
+    inStock,
+    sold} = product
+
+    useEffect(() => {
+      console.log(product)
+    }, []);
   return (
     <MuiThemeProvider theme={theme}>
       <Container>
         <Link href={`product/${_id}`}>
           <div title="Mais informações sobre este produto" style={{ display: 'flex', justifyContent: 'center' }}>
-            <img src={images} alt="" width="200px" />
+            <img src={images[0].url} alt="" width="200px" />
           </div>
         </Link>
         <div
@@ -91,6 +101,7 @@ const ProctCard: React.FC<ProctCardProps> = ({
               color="primary"
               variant="contained"
               startIcon={<MdAddShoppingCart />}
+              onClick={() => dispatch(addToCart(product, cart))}
             >
               Adicionar
             </Button>

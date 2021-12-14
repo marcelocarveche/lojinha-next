@@ -54,7 +54,7 @@ const NavBar: React.FC = () => {
         <NavLink href="/register/user">
           <MyLink>Cadastrar-se</MyLink>
         </NavLink>
-        <NavLink href="/">
+        <NavLink href="/cart">
           <MyLink>
             <AiOutlineShoppingCart size="30px"></AiOutlineShoppingCart>
             <span style={{ position: 'relative', background: 'red', borderRadius: '30%', color: 'white', top: '-22px', left: '-13px', padding: '2px 4px', fontSize: '14px'}}>

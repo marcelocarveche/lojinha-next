@@ -6,6 +6,7 @@ export const Container = styled.div`
   border-radius: 1rem;
   margin-top: 2rem;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   form {
     flex-grow: 5;

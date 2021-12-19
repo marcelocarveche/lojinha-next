@@ -6,6 +6,7 @@ export const Container = styled.div`
   border-radius: 1rem;
   margin-top: 2rem;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   form {
     flex-grow: 5;
@@ -21,3 +22,14 @@ export const Container = styled.div`
     }
   }
 `
+
+export const ContainerLogin = styled(Container)`
+justify-content: center;
+  form {
+    flex-grow: 15;
+  }
+  & > span {
+    background-image: url('/Scenes/Scenes08.svg');
+    background-size: 400px;
+  }
+`;

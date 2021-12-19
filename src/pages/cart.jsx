@@ -6,6 +6,9 @@ import { DataContext } from '../store/GlobalState'
 import { CartTable, CartTotal } from '../styles/styled-components/Cart'
 import { Button } from '@material-ui/core'
 import { createTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import { HiMinusCircle, HiPlusCircle } from 'react-icons/hi'
+import { FaTrash } from 'react-icons/fa'
+import { increase, decrease, remove } from '../store/Action'
 
 const Cart = () => {
   const { state, dispatch } = useContext(DataContext)
@@ -34,26 +37,20 @@ const Cart = () => {
     // )
     console.log(event.target.value)
   }
+  const handleIncreaseItem = (id) => {
+
+  }
 
   useEffect(() => {
-
-    const __next__cart__if = JSON.parse(
-      localStorage.getItem('__next__cart__if')
-    )
-
-    if(__next__cart__if){
-      dispatch({ type: 'ADD_CART', payload: __next__cart__if})
-    }
-
-
-    let calc = 0;
+    setProducts(cart)
+    let calc = 0
     cart.map(e => {
       calc += e.quantity * e.price
     })
     setTotal(calc)
     // setItemValues(list)
     // console.log(list)
-  }, [])
+  }, [cart])
   return (
     <MuiThemeProvider theme={theme}>
       <Wrapper>
@@ -79,7 +76,7 @@ const Cart = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {cart.map((item, index) => (
+                  {products.map((item, index) => (
                     <tr key={index}>
                       <td>
                         <div className="productInfo">
@@ -91,7 +88,7 @@ const Cart = () => {
                       </td>
                       <td className="productQtdd">
                         <center>
-                          <input
+                          {/* <input
                             type="text"
                             name="quantity"
                             // id={}
@@ -99,10 +96,16 @@ const Cart = () => {
                             // value={itemValues[index]}
                             disabled
                             onChange={e => handleCalcularTotal(e)}
-                          />
-                          <a href="#" className={item._id} onClick={(e) => alert("remover produto pelo id: " + e.target.className)}>
+                          /> */}
+                          <p>{item.quantity}</p>
+                          <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <HiPlusCircle size="25px" onClick={() => dispatch(increase(cart,  item._id))}/>
+                            <HiMinusCircle size="25px" onClick={() => dispatch(decrease(cart,  item._id))} />
+                            <FaTrash size="20px"onClick={() => dispatch(remove(cart,  item._id))} />
+                          </div>
+                          {/* <a href="#" className={item._id} onClick={(e) => alert("remover produto pelo id: " + e.target.className)}>
                             Remover
-                          </a>
+                          </a> */}
                         </center>
                       </td>
                       <td>
@@ -119,7 +122,7 @@ const Cart = () => {
                   curae; In quam purus, blandit non neque vitae, consectetur
                   iaculis nulla. In et facilisis tellus.
                 </h4>
-                <h4 style={{color: 'purple'}}>
+                <h4 style={{ color: 'purple' }}>
                   TOTAL:{' '}
                   {total.toLocaleString('pt-BR', {
                     style: 'currency',
@@ -130,7 +133,14 @@ const Cart = () => {
                   color="primary"
                   variant="contained"
                   // startIcon={<MdAddShoppingCart />}
-                  onClick={() => dispatch({ type: 'NOTIFY', payload: { error: 'Aguarde... Estamos finalizando sua compra.' } })}
+                  onClick={() =>
+                    dispatch({
+                      type: 'NOTIFY',
+                      payload: {
+                        error: 'Aguarde... Estamos finalizando sua compra.'
+                      }
+                    })
+                  }
                 >
                   Finalizar compra
                 </Button>

@@ -29,7 +29,10 @@ export const CartTable = styled.table`
       /* padding: 10px 0; */
       input {
         text-align: right;
-        width: 50px;
+        width: 80px;
+      }
+      svg {
+        cursor: pointer;
       }
     }
   }

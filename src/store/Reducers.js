@@ -17,6 +17,21 @@ const reducers = (state, action) => {
         ...state,
         cart: action.payload
       }
+    case ACTIONS.INCREASE_CART:
+      return {
+        ...state,
+        cart: action.payload
+      }
+    case ACTIONS.DECREASE_CART:
+      return {
+        ...state,
+        cart: action.payload
+      }
+    case ACTIONS.REMOVE_CART:
+      return {
+        ...state,
+        cart: action.payload
+      }
 
     default:
       return state
